@@ -1,0 +1,14 @@
+i.icon.code{
+  font-size: 2em;
+}
+
+body{
+  margin-top: 60px;
+}
+#delete{
+  display: inline;
+}
+.center{
+  width: 50%;
+  margin: 0 auto;
+}

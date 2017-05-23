@@ -1,0 +1,40 @@
+<% include partials/header %>
+
+<form action="/signup" method="post">
+
+<div class="ui form center">
+  <div class="field">
+    <label>Name:</label>
+    <input type="text" name="name" value="">
+  </div>
+  <div class="field">
+    <label>Gender:</label>
+    <div class="ui radio checkbox">
+       <input name="gender" value="male"checked="checked" type="radio">
+       <label>Male</label>
+     </div>
+     <div class="ui radio checkbox">
+       <input name="gender" value="female" checked="checked" type="radio">
+       <label>Female</label>
+     </div>
+  </div>
+  <div class="field">
+    <label>Age:</label>
+    <input type="number" name="age" value="">
+  </div>
+  <div class="field">
+    <label>Username:</label>
+    <input type="text" name="username" value="">
+  </div>
+  <div class="field">
+    <label>Password</label>
+    <input type="password" name="password" value="">
+  </div>
+  <button type="submit" class="ui button" name="button">SignUp</button>
+</div>
+
+</form>
+
+
+
+<% include partials/footer %>

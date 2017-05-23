@@ -1,0 +1,72 @@
+<% include partials/header %>
+<div class="ui grid container" >
+  <div class="five wide column">
+    <div class="ui segment">
+
+    <div class="ui fluid card">
+       <div class="image">
+         <img src="http://www.promatica.co.uk/sites/default/pagecontent/getpageimage/3244">
+       </div>
+       <div class="content">
+         <a class="header"><%=currentUser.username%></a>
+       </div>
+     </div>
+      <% if(currentUser.age) {%>
+        Age: <%=currentUser.age %>
+     <%}else{%>
+       Age:unknown
+     <%}%>
+     <br>
+     <% if(currentUser.friends.length>0) {%>
+       Friends:<span>
+         <%currentUser.friends.forEach(function(e){%>
+           <%=e.username%>
+        <% })%>
+       </span>
+      <%}else{%>
+        Friends: none
+      <%}%>
+   </div>
+  </div>
+
+
+  <div class="eleven wide column">
+    <div class="ui cards">
+      <%user.forEach(function(u){%>
+        <%if(!currentUser.equals(u)){%>
+        <div id="<%=u.name%>" class="card">
+          <div class="content">
+            <div class="header"><%=u.name%></div>
+            <div class="description">
+              <%=u.name%> is <%=u.age%> and <%=u.gender%>
+            </div>
+          </div>
+          <div id="<%=u.id%>"class="ui bottom attached button">
+            <i class="add icon"></i>
+            Add Friend
+          </div>
+        </div>
+        <form id="form<%=u.id%>" action="/profile" method="post">
+          <input class="hideInput"type="text" name="id" value="<%=u.id%>">
+        </form>
+        <%}%>
+        <%})%>
+      </div>
+    </div>
+  </div>
+<script>
+$(document).ready(function () {
+  var users = []
+  <%user.forEach(function(u){%>
+    <%if(!currentUser.equals(u)){%>
+  $("#<%=u.id%>").click(function () {
+    $("#form<%=u.id%>").submit()
+    $("#<%=u.name%>").remove()
+  })
+  <%}%>
+  <%})%>
+  $(".hideInput").hide()
+})
+</script>
+
+<% include partials/footer %>
